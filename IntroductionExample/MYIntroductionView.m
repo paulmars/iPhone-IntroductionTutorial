@@ -420,15 +420,11 @@
         panelDescriptionHeight = [panel.Description sizeWithFont:DESCRIPTION_FONT constrainedToSize:CGSizeMake(self.ContentScrollView.frame.size.width - 20, 100) lineBreakMode:NSLineBreakByWordWrapping].height;
     }
     panelDescriptionHeight = panelDescriptionHeight + 10;
-    
+
+    // always use max height
     int contentWrappedScrollViewHeight = 0;
-    if ((panelContentHeight + panelDescriptionHeight + panelTitleLabelFrame.size.height) > maxScrollViewHeight) {
-        contentWrappedScrollViewHeight = maxScrollViewHeight;
-        panelContentHeight = contentWrappedScrollViewHeight-panelDescriptionHeight - panelTitleLabelFrame.size.height - 10;
-    }
-    else if ((panelContentHeight+panelDescriptionHeight + panelTitleLabelFrame.size.height) <= maxScrollViewHeight){
-        contentWrappedScrollViewHeight = panelContentHeight + panelTitleLabelFrame.size.height + panelDescriptionHeight;
-    }
+    contentWrappedScrollViewHeight = maxScrollViewHeight;
+    panelContentHeight = contentWrappedScrollViewHeight-panelDescriptionHeight - panelTitleLabelFrame.size.height - 10;
 
     panelView.frame = CGRectMake(*xIndex, 0, self.ContentScrollView.frame.size.width, contentWrappedScrollViewHeight);
     
