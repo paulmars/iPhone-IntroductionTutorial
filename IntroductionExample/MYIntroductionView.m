@@ -28,9 +28,9 @@
 #define DEFAULT_BACKGROUND_COLOR [UIColor colorWithWhite:0 alpha:0.9]
 #define HEADER_VIEW_HEIGHT 45
 #define PAGE_CONTROL_PADDING 1
-#define TITLE_FONT [UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0]
+#define TITLE_FONT [UIFont fontWithName:@"HelveticaNeue-Bold" size:24.0]
 #define TITLE_TEXT_COLOR [UIColor whiteColor]
-#define DESCRIPTION_FONT [UIFont fontWithName:@"HelveticaNeue-Light" size:13.0]
+#define DESCRIPTION_FONT [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
 #define DESCRIPTION_TEXT_COLOR [UIColor whiteColor]
 
 @implementation MYIntroductionView
@@ -442,8 +442,10 @@
     
     //Update frames based on the new/scaled image size we just gathered
     panelTitleLabel.frame = CGRectMake(10, panelContentHeight + 5, panelTitleLabel.frame.size.width, panelTitleLabel.frame.size.height);
-    panelDescriptionLabel.frame = CGRectMake(0, panelContentHeight + panelTitleLabel.frame.size.height + 5, self.ContentScrollView.frame.size.width, panelDescriptionHeight);
-    
+
+    float panelDescriptionPadding = 15.0;
+    panelDescriptionLabel.frame = CGRectMake(panelDescriptionPadding, panelContentHeight + panelTitleLabel.frame.size.height + 5, self.ContentScrollView.frame.size.width - (panelDescriptionPadding*2), panelDescriptionHeight);
+
     //Update xIndex
     *xIndex += self.ContentScrollView.frame.size.width;
     
